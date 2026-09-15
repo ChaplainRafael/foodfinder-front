@@ -1,13 +1,138 @@
+
+/* =========================================================
+   FOOD FINDER
+   GLOBAL STYLES + DESIGN TOKENS
+========================================================= */
+
+
+/* =========================================================
+   COLOR VARIABLES
+========================================================= */
+
+:root {
+  /* ---------- Main palette ---------- */
+
+  --food-primary: #e87561;
+  --food-primary-dark: #c95d4b;
+  --food-primary-soft: #f4c4b8;
+
+  --food-surface: #f8eee7;
+  --food-surface-light: #fff8f3;
+  --food-surface-dark: #eadbd1;
+
+  /* ---------- Text ---------- */
+
+  --food-text: #493b35;
+  --food-text-soft: #6f5f57;
+  --food-text-muted: #87766d;
+
+  /* ---------- Supporting colors ---------- */
+
+  --food-yellow-soft: #f5dfad;
+  --food-green-soft: #cfe3cf;
+
+  /* ---------- Clay shadows ---------- */
+
+  --clay-shadow:
+    12px 12px 28px rgba(170, 145, 115, 0.25),
+    -10px -10px 24px rgba(255, 255, 255, 0.9);
+
+  --clay-shadow-small:
+    8px 8px 18px rgba(170, 145, 115, 0.2),
+    -6px -6px 14px rgba(255, 255, 255, 0.8);
+
+  --clay-shadow-hover:
+    14px 14px 30px rgba(170, 145, 115, 0.28),
+    -10px -10px 24px rgba(255, 255, 255, 0.9);
+
+  --clay-shadow-inset:
+    inset 5px 5px 12px rgba(170, 145, 115, 0.16),
+    inset -5px -5px 12px rgba(255, 255, 255, 0.8);
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+html {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+
+  min-width: 320px;
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    'Roboto',
+    'Oxygen',
+    'Ubuntu',
+    'Cantarell',
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
     sans-serif;
+
+  background: var(--food-surface);
+
+  color: var(--food-text);
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+
+/* =========================================================
+   DEFAULT ELEMENTS
+========================================================= */
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+
+/* =========================================================
+   CODE
+========================================================= */
+
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family:
+    source-code-pro,
+    Menlo,
+    Monaco,
+    Consolas,
+    'Courier New',
     monospace;
 }
+

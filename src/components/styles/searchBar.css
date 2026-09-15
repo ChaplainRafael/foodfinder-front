@@ -1,0 +1,471 @@
+
+.search-section {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 5% 2rem;
+}
+
+/* ================================
+   MAIN SEARCH CARD
+================================ */
+
+.search-card {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+
+  padding: 3rem;
+
+  border-radius: 38px;
+
+  background: var(--food-surface, #f8eee7);
+
+  box-shadow:
+    18px 18px 38px rgba(170, 139, 122, 0.22),
+    -12px -12px 30px rgba(255, 255, 255, 0.9);
+
+  overflow: hidden;
+}
+
+.search-card::before {
+  content: "";
+
+  position: absolute;
+  width: 280px;
+  height: 280px;
+
+  right: -130px;
+  top: -150px;
+
+  border-radius: 50%;
+
+  background: rgba(232, 117, 97, 0.08);
+}
+
+/* ================================
+   CHEF CAT
+================================ */
+
+.search-character {
+  position: relative;
+  z-index: 1;
+
+  flex: 0 0 190px;
+}
+
+.search-cat-bubble {
+  width: 185px;
+  height: 185px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  overflow: hidden;
+
+  border-radius: 55px;
+
+  background: #f1ddd2;
+
+  box-shadow:
+    inset 8px 8px 18px rgba(170, 139, 122, 0.15),
+    inset -8px -8px 18px rgba(255, 255, 255, 0.75),
+    8px 8px 18px rgba(170, 139, 122, 0.12);
+}
+
+.search-cat-bubble img {
+  width: 95%;
+  height: 95%;
+
+  object-fit: contain;
+
+  animation: search-cat-float 4s ease-in-out infinite;
+}
+
+@keyframes search-cat-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* ================================
+   CONTENT
+================================ */
+
+.search-content {
+  position: relative;
+  z-index: 1;
+
+  flex: 1;
+}
+
+.search-eyebrow {
+  display: inline-block;
+  margin-bottom: 0.7rem;
+
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+
+  color: var(--food-primary, #e87561);
+}
+
+.search-content h1 {
+  margin: 0;
+
+  font-size: clamp(2.3rem, 5vw, 4rem);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+}
+
+.search-content h1 span {
+  color: var(--food-primary, #e87561);
+}
+
+.search-description {
+  max-width: 560px;
+
+  margin: 1rem 0 1.8rem;
+
+  color: var(--food-muted, #87766d);
+
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+/* ================================
+   FORM
+================================ */
+
+.search-form {
+  display: flex;
+  align-items: stretch;
+  gap: 0.8rem;
+}
+
+.search-input-wrapper {
+  position: relative;
+
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+}
+
+.search-input-icon {
+  position: absolute;
+  left: 1.1rem;
+
+  font-size: 1.1rem;
+
+  pointer-events: none;
+}
+
+.search-bar-input {
+  width: 100%;
+  min-width: 0;
+
+  padding: 1.1rem 3rem 1.1rem 3rem;
+
+  border: none;
+  outline: none;
+  border-radius: 18px;
+
+  background: var(--food-surface, #f8eee7);
+
+  color: var(--food-text, #493b35);
+
+  font-family: inherit;
+  font-size: 0.95rem;
+
+  box-shadow:
+    inset 6px 6px 13px rgba(170, 139, 122, 0.18),
+    inset -5px -5px 12px rgba(255, 255, 255, 0.8);
+
+  transition:
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.search-bar-input::placeholder {
+  color: #a6968c;
+}
+
+.search-bar-input:focus {
+  box-shadow:
+    inset 7px 7px 15px rgba(170, 139, 122, 0.2),
+    inset -5px -5px 12px rgba(255, 255, 255, 0.85),
+    0 0 0 3px rgba(232, 117, 97, 0.12);
+}
+
+.clear-search {
+  position: absolute;
+  right: 0.9rem;
+
+  width: 28px;
+  height: 28px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #eadbd3;
+  color: var(--food-muted, #87766d);
+
+  font-size: 1.1rem;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+.clear-search:hover {
+  color: var(--food-primary, #e87561);
+}
+
+/* ================================
+   SEARCH BUTTON
+================================ */
+
+.search-button {
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+
+  min-width: 145px;
+  padding: 0 1.25rem;
+
+  border: none;
+  border-radius: 18px;
+
+  background: var(--food-primary, #e87561);
+  color: white;
+
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    7px 7px 16px rgba(190, 105, 88, 0.25),
+    -5px -5px 12px rgba(255, 255, 255, 0.75);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.search-button-icon {
+  font-size: 1.2rem;
+  transition: transform 0.2s ease;
+}
+
+.search-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    9px 10px 19px rgba(190, 105, 88, 0.3),
+    -5px -5px 12px rgba(255, 255, 255, 0.8);
+}
+
+.search-button:hover .search-button-icon {
+  transform: translateX(3px);
+}
+
+.search-button:active {
+  transform: translateY(1px);
+
+  box-shadow:
+    inset 5px 5px 10px rgba(130, 70, 60, 0.2),
+    inset -4px -4px 9px rgba(255, 255, 255, 0.3);
+}
+
+/* ================================
+   SEARCH TIP
+================================ */
+
+.search-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  margin-top: 1rem;
+}
+
+.search-hint span {
+  padding: 0.25rem 0.5rem;
+
+  border-radius: 7px;
+
+  background: #eadbd3;
+
+  color: var(--food-primary, #e87561);
+
+  font-size: 0.6rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.search-hint p {
+  margin: 0;
+
+  color: var(--food-muted, #87766d);
+
+  font-size: 0.75rem;
+}
+
+/* ================================
+   EXAMPLES
+================================ */
+
+.ingredient-examples {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+
+  margin-top: 1.3rem;
+  padding-left: 0.5rem;
+}
+
+.ingredient-examples > span {
+  margin-right: 0.15rem;
+
+  color: var(--food-muted, #87766d);
+
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.ingredient-examples button {
+  padding: 0.55rem 0.85rem;
+
+  border: none;
+  border-radius: 12px;
+
+  background: var(--food-surface, #f8eee7);
+  color: var(--food-text, #493b35);
+
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    4px 4px 9px rgba(170, 139, 122, 0.15),
+    -3px -3px 8px rgba(255, 255, 255, 0.75);
+
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
+}
+
+.ingredient-examples button:hover {
+  transform: translateY(-2px);
+  color: var(--food-primary, #e87561);
+}
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 850px) {
+  .search-card {
+    gap: 1.8rem;
+    padding: 2.3rem;
+  }
+
+  .search-character {
+    flex-basis: 145px;
+  }
+
+  .search-cat-bubble {
+    width: 145px;
+    height: 145px;
+    border-radius: 42px;
+  }
+
+  .search-form {
+    flex-direction: column;
+  }
+
+  .search-button {
+    min-height: 52px;
+  }
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 620px) {
+  .search-section {
+    padding: 1.5rem 4%;
+  }
+
+  .search-card {
+    flex-direction: column;
+    align-items: stretch;
+
+    padding: 1.7rem;
+
+    border-radius: 28px;
+  }
+
+  .search-character {
+    flex: none;
+
+    display: flex;
+    justify-content: center;
+  }
+
+  .search-cat-bubble {
+    width: 120px;
+    height: 120px;
+
+    border-radius: 35px;
+  }
+
+  .search-content h1 {
+    font-size: 2.55rem;
+  }
+
+  .search-description {
+    font-size: 0.92rem;
+  }
+
+  .search-form {
+    gap: 0.7rem;
+  }
+
+  .search-bar-input {
+    min-height: 52px;
+  }
+
+  .search-button {
+    width: 100%;
+  }
+
+  .ingredient-examples {
+    align-items: flex-start;
+    flex-direction: column;
+    padding-left: 0;
+  }
+
+  .ingredient-examples button {
+    width: 100%;
+    text-align: left;
+  }
+}
+
