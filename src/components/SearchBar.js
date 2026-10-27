@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./styles/searchBar.css";
+import { toast } from "react-toastify";
 
 const SearchBar = ({ onResults, setLoading }) => {
   const [query, setQuery] = useState("");
@@ -20,6 +21,7 @@ const SearchBar = ({ onResults, setLoading }) => {
 
       onResults(res.data);
     } catch (error) {
+      toast.error("Failed to save recipes.");
       console.error("Error fetching recipes", error);
     } finally {
       setLoading(false);

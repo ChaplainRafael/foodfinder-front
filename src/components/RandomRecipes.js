@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./styles/randomRecipes.css";
+import { toast } from "react-toastify";
 
 const RandomRecipe = () => {
   const [recipes, setRecipes] = useState([]);
@@ -19,6 +20,7 @@ const RandomRecipe = () => {
 
         setRecipes(res.data);
       } catch (error) {
+        toast.error("Failed to save recipes.");
         console.error("Error fetching recipes:", error);
       } finally {
         setLoading(false);

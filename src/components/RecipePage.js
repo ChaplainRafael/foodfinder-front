@@ -22,6 +22,7 @@ const RecipePage = () => {
 
         setRecipe(res.data);
       } catch (error) {
+        toast.error("Failed to fetch recipe.");
         console.error("Error fetching recipe:", error);
       } finally {
         setLoading(false);
@@ -29,7 +30,7 @@ const RecipePage = () => {
     };
 
     fetchDetail();
-  }, [id]);
+  }, [id, API_BASE_URL]);
 
   const handleSave = async (recipe) => {
     const token = localStorage.getItem("token");
