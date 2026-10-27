@@ -6,12 +6,24 @@ import "./styles/savedRecipes.css";
 
 const SavedRecipes = () => {
   const [saved, setSaved] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [retryCount, setRetryCount] = useState(0);
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
   const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
   useEffect(() => {
     const fetchRecipes = async () => {
+      setLoading(true);
+      setError(null);
+
+      if (!token) {
+        setError("Please sign in to view your saved recipes.");
+        setLoading(false);
+        return;
+      }
+
       try {
         const response = await axios.get(`${API_BASE_URL}/api/recipes`, {
           headers: {
@@ -22,11 +34,14 @@ const SavedRecipes = () => {
         setSaved(response.data);
       } catch (error) {
         console.error("Failed to fetch recipes:", error);
+        setError("We couldn't load your saved recipes. Please try again.");
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchRecipes();
-  }, [token, API_BASE_URL]);
+  }, [token, API_BASE_URL, retryCount]);
 
   const handleDelete = async (_id) => {
     try {
@@ -47,6 +62,44 @@ const SavedRecipes = () => {
   const handleDetail = (recipe) => {
     navigate(`/recipes/${recipe.originalId}`);
   };
+
+  if (loading) {
+    return (
+      <main className="saved-page">
+        <section className="saved-empty">
+          <h1>Loading your recipe box...</h1>
+          <p>Please wait while we retrieve your saved recipes.</p>
+        </section>
+      </main>
+    );
+  }
+
+  if (error) {
+    return (
+      <main className="saved-page">
+        <section className="saved-empty">
+          <h1>Unable to load recipes</h1>
+          <p>{error}</p>
+
+          {token ? (
+            <button
+              className="saved-primary-button"
+              onClick={() => setRetryCount((count) => count + 1)}
+            >
+              Try again
+            </button>
+          ) : (
+            <button
+              className="saved-primary-button"
+              onClick={() => navigate("/login")}
+            >
+              Sign in
+            </button>
+          )}
+        </section>
+      </main>
+    );
+  }
 
   if (saved.length === 0) {
     return (

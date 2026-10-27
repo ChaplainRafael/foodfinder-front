@@ -10,21 +10,14 @@ import "./styles/randomRecipes.css";
 const RandomRecipe = () => {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
+  const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        const res = await axios.get(
-          "https://api.spoonacular.com/recipes/random",
-          {
-            params: {
-              apiKey: process.env.REACT_APP_API_KEY,
-              number: 9,
-            },
-          },
-        );
+        const res = await axios.get(`${API_BASE_URL}/api/recipes/random`);
 
-        setRecipes(res.data.recipes);
+        setRecipes(res.data);
       } catch (error) {
         console.error("Error fetching recipes:", error);
       } finally {
@@ -33,7 +26,7 @@ const RandomRecipe = () => {
     };
 
     fetchRecipes();
-  }, []);
+  }, [API_BASE_URL]);
 
   const settings = {
     dots: true,

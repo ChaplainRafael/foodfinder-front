@@ -17,12 +17,7 @@ const RecipePage = () => {
     const fetchDetail = async () => {
       try {
         const res = await axios.get(
-          `https://api.spoonacular.com/recipes/${id}/information`,
-          {
-            params: {
-              apiKey: process.env.REACT_APP_API_KEY,
-            },
-          },
+          `${API_BASE_URL}/api/recipes/${id}/information`,
         );
 
         setRecipe(res.data);

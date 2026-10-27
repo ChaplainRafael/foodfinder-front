@@ -11,9 +11,13 @@ const RecipeList = ({ recipes, loading }) => {
   const handleSave = async (recipe) => {
     const token = localStorage.getItem("token");
 
-    const ingredients = recipe.extendedIngredients?.map((ingredient) => ({
-      name: ingredient.name,
-    }));
+    const ingredients = (recipe.extendedIngredients ?? []).map(
+      (ingredient) => ({
+        name: ingredient.name,
+        amount: ingredient.amount,
+        unit: ingredient.unit,
+      }),
+    );
 
     try {
       await axios.post(

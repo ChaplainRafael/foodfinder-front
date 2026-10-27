@@ -4,6 +4,7 @@ import "./styles/searchBar.css";
 
 const SearchBar = ({ onResults, setLoading }) => {
   const [query, setQuery] = useState("");
+  const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -13,18 +14,11 @@ const SearchBar = ({ onResults, setLoading }) => {
     setLoading(true);
 
     try {
-      const response = await axios.get(
-        "https://api.spoonacular.com/recipes/findByIngredients",
-        {
-          params: {
-            apiKey: process.env.REACT_APP_API_KEY,
-            ingredients: query,
-            number: 24,
-          },
-        },
-      );
+      const res = await axios.get(`${API_BASE_URL}/api/recipes/search`, {
+        params: { ingredients: query },
+      });
 
-      onResults(response.data);
+      onResults(res.data);
     } catch (error) {
       console.error("Error fetching recipes", error);
     } finally {
